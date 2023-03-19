@@ -92,7 +92,7 @@ output = layers.Conv2D(1, 3, activation="tanh", padding="same")(convD8)
 # U-Net model
 model = Model(inputs=input, outputs=output)
 adam = keras.optimizers.Adam(learning_rate=0.0008)
-unet.compile(optimizer=adam, loss="mean_absolute_error")
+model.compile(optimizer=adam, loss="mean_absolute_error")
 
 
 def signalToNoiseLoss(y_true, y_pred):
