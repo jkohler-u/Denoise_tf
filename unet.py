@@ -1,7 +1,7 @@
 import subprocess
 
 # Define the package you want to install
-package_name = 'pip install'
+package_name = 'tensorflow-io'
 
 # Use pip to install the package
 subprocess.check_call(["pip", "install", package_name])
