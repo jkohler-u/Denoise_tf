@@ -8,6 +8,7 @@ from scipy.io.wavfile import read
 import librosa
 import librosa.display
 from sklearn.model_selection import train_test_split
+import tensorflow as tf
 
 
 import numpy as np
