@@ -1,3 +1,6 @@
+#pips
+!pip install tensorflow-io
+
 #libaries
 import tensorflow as tf
 from tensorflow import keras
