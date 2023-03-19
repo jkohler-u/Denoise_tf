@@ -10,6 +10,9 @@ import librosa.display
 from sklearn.model_selection import train_test_split
 
 
+import numpy as np
+import os
+
 def prepare_data(name_dataset):
     """ load the data, convert it to a tensor
     
@@ -17,7 +20,7 @@ def prepare_data(name_dataset):
     name_dataset - name of the folder the dataset was loaded into
     """
     data = []
-    #sorted(files) TF suggestio
+    #sorted(files) TF suggestion
     for root, dirs, files in sorted(os.walk(name_dataset)):
         for filename in sorted(files):
             if filename.endswith('.wav'):
@@ -30,7 +33,7 @@ def prepare_data(name_dataset):
                 sr = tf.cast(sr, dtype=tf.int64)
                 # Goes from sample_rate to 16000Hz - amplitude of the audio signal
                 audio = tfio.audio.resample(audio_tensor, rate_in=sr, rate_out=16000)
-                #safe in list data
+                # save in list data
                 data.append(np.array(audio))
     # Convert the data to a NumPy array
     return np.array(data)
