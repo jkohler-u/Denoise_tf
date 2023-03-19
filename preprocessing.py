@@ -22,20 +22,19 @@ def prepare_data(name_dataset):
     for root, dirs, files in sorted(os.walk(name_dataset)):
         for filename in sorted(files):
             if filename.endswith('.wav'):
-                  # Load the audio file using librosa
-                  filepath = os.path.join(root, filename)
-                  audio, sr = librosa.load(filepath, sr=16000)
-                  # convert the audio input to a tensor of type float - float is important for the resampling
-                  audio_tensor = tf.convert_to_tensor(audio, dtype=tf.float32)
-                  # convert the sample rate, ito a integer tensor
-                  sr = tf.cast(sr, dtype=tf.int64)
-                  # Goes from sample_rate to 16000Hz - amplitude of the audio signal
-                  audio = tfio.audio.resample(audio_tensor, rate_in=sr, rate_out=16000)
-                  #safe in list data
-                  data.append(np.array(audio))
-
-      # Convert the data to a NumPy array
-      return np.array(data)
+                # Load the audio file using librosa
+                filepath = os.path.join(root, filename)
+                audio, sr = librosa.load(filepath, sr=16000)
+                # convert the audio input to a tensor of type float - float is important for the resampling
+                audio_tensor = tf.convert_to_tensor(audio, dtype=tf.float32)
+                # convert the sample rate, ito a integer tensor
+                sr = tf.cast(sr, dtype=tf.int64)
+                # Goes from sample_rate to 16000Hz - amplitude of the audio signal
+                audio = tfio.audio.resample(audio_tensor, rate_in=sr, rate_out=16000)
+                #safe in list data
+                data.append(np.array(audio))
+    # Convert the data to a NumPy array
+    return np.array(data)
 
 def make_same(data, size):
     ''' make sure all data the same length
