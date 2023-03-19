@@ -18,11 +18,11 @@ def prepare_data(name_dataset):
     name_dataset - name of the folder the dataset was loaded into
     """
     data = []
-      #sorted(files) TF suggestion
-      for root, dirs, files in sorted(os.walk(name_dataset)):
+    #sorted(files) TF suggestio
+    for root, dirs, files in sorted(os.walk(name_dataset)):
         for filename in sorted(files):
             if filename.endswith('.wav'):
-                # Load the audio file using librosa
+                  # Load the audio file using librosa
                   filepath = os.path.join(root, filename)
                   audio, sr = librosa.load(filepath, sr=16000)
                   # convert the audio input to a tensor of type float - float is important for the resampling
@@ -55,13 +55,13 @@ def noise(data):
     Keyword arguments: 
     data = the dataset
     '''
-      temp_data = []
-      noise_factor = 0.004
-      # add noise to the audio
-      for i in data:
+    temp_data = []
+    noise_factor = 0.004
+    # add noise to the audio
+    for i in data:
         temp = i + noise_factor*np.random.normal(size=i.shape)
         temp_data.append(temp)
-      return temp_data
+    return temp_data
 
 def spectrogram(data):
     ''' convert to a melspectrogram, normalize data, and add a faux-color dimension
