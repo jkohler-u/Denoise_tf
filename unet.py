@@ -41,7 +41,6 @@ pool7 = layers.MaxPooling2D(3,strides =  1,padding="same")(dropout7)
 conv8 = layers.Conv2D(1024, 3, activation="relu", padding="same")(pool7)
 dropout8 = layers.Dropout(rate=0.5)(conv8)  # added dropout
 pool8 = layers.MaxPooling2D(3,strides = 1, padding="same")(dropout8)
-http://localhost:8888/notebooks/tf/Model.ipynb#
 # Bridge
 conv9 = layers.Conv2D(126, 3, activation="relu", padding="same")(pool8)
 
