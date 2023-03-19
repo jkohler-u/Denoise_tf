@@ -1,5 +1,11 @@
-#pips
-!pip install tensorflow-io
+import subprocess
+
+# Define the package you want to install
+package_name = 'pip install'
+
+# Use pip to install the package
+subprocess.check_call(["pip", "install", package_name])
+ 
 
 #libaries
 import tensorflow as tf
