@@ -46,7 +46,7 @@ def prepare_data(name_dataset):
                 # save in list data
                 data.append(np.array(audio))
     # Convert the data to a NumPy array
-    return np.array(data)
+    return data
 
 def make_same(data, size):
     ''' make sure all data the same length
