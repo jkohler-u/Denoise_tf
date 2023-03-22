@@ -50,7 +50,7 @@ def prepare_data(name_dataset):
                 filepath = os.path.join(root, filename)
                 audio = load_and_process_audio(filepath)
                 data.append(audio)
-     return data
+    return data
    '''
     #sorted(files) TF suggestion
     for root, dirs, files in sorted(os.walk(name_dataset)):
