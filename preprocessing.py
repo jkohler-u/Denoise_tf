@@ -22,7 +22,7 @@ import tensorflow_io as tfio
 
 import numpy as np
 import os
-  
+
         
 def prepare_data(name_dataset):
     """ load the data, convert it to a tensor
@@ -39,13 +39,9 @@ def prepare_data(name_dataset):
                 filepath = os.path.join(root, filename)
                 audio, sr = librosa.load(filepath, sr=16000)
                 # convert the audio input to a tensor of type float - float is important for the resampling
-                audio_tensor = tf.convert_to_tensor(audio, dtype=tf.float32)
-                # convert the sample rate, ito a integer tensor
-                sr = tf.cast(sr, dtype=tf.int64)
-                # Goes from sample_rate to 16000Hz - amplitude of the audio signal
-                audio = tfio.audio.resample(audio_tensor, rate_in=sr, rate_out=16000)
+                audio_tensor = tf.convert_to_tensor(audio, dtype=tf.float32)              
                 # save in list data
-                data.append(np.array(audio))
+                data.append(np.array(audio_tensor))
     return data
 
 def make_same(data, size):
