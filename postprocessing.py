@@ -40,3 +40,15 @@ def convert_to_audio(data):
   S = librosa.feature.inverse.mel_to_audio(S, sr=16000, n_fft=1024,hop_length=256, win_length= 1024)
   #returns the audio data
   return S
+  
+def get_phase(data):
+  ''' get phase information from data
+  
+    Keyword arguments:
+    dataset -- the dataset to be sampled from
+  '''
+  phase = []
+  for i in range(len(data)):
+    spectrogram = librosa.stft(data[i], n_fft=2048, hop_length=256, window='hann')
+    phase.append(np.angle(spectrogram))
+  return np.array(phase)
