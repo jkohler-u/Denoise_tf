@@ -8,7 +8,7 @@ Original file is located at
 """
 
 import tensorflow as tf
-
+import numpy as np
 def get_one_of_each(dataset):
   '''produces one sample to compare the quality of the prediction 
   
