@@ -3,10 +3,7 @@ import subprocess
 package_name = 'tensorflow-io'
 # Use pip to install the package
 subprocess.check_call(["pip", "install", package_name])
- 
 
-import numpy as np
-import matplotlib.pyplot as plt
 
 # audio processing/display
 import soundfile as sf
@@ -19,8 +16,8 @@ import tensorflow as tf
 import tensorflow_io as tfio
 
 
-
 import numpy as np
+import matplotlib.pyplot as plt
 import os
 
         
