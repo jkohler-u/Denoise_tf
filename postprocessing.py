@@ -36,8 +36,7 @@ def get_phase(data):
     Keyword arguments:
     dataset -- the dataset to be sampled from
   '''
-  phase = []
-  for i in range(len(data)):
-    spectrogram = librosa.stft(data[i], n_fft=2048, hop_length=256, window='hann')
-    phase.append(np.angle(spectrogram))
+ 
+  spectrogram = librosa.stft(data, n_fft=2048, hop_length=256, window='hann')
+  phase.append(np.angle(spectrogram))
   return np.array(phase)
