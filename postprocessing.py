@@ -9,22 +9,6 @@ Original file is located at
 
 import tensorflow as tf
 import numpy as np
-def get_one_of_each(dataset):
-  '''produces one sample to compare the quality of the prediction 
-  
-   Keyword arguments:
-   dataset -- the dataset to be sampled from
-   '''
-  noisy, clean = [0], [0]
-  #samples the first datapoint fom the dataset
-  for x, y in dataset.take(1).as_numpy_iterator():
-      noisy = x[:1]
-      clean = y[:1] 
-  #procduces a dataset with one dataset for the prediciton
-  prediction_for_rest = tf.data.Dataset.from_tensor_slices((noisy, clean))
-  #retruns the dataset, as well as its componets in a displayable format
-  return prediction_for_rest, tf.squeeze(noisy), tf.squeeze(clean)
-
 import librosa
 
 def convert_to_audio(data):
