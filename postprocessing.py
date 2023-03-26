@@ -20,7 +20,7 @@ def convert_to_audio(data, noisy):
   #reverse the nromalisation
   data = data*40-40 +20
   #get the phase information
-  spectrogram = librosa.stft(data, n_fft=2048, hop_length=256, window='hann')
+  spectrogram = librosa.stft(noisy, n_fft=2048, hop_length=256, window='hann')
   phase = np.angle(spectrogram)
   #convert the mel-spectrogram to a stft
   mag = librosa.feature.inverse.mel_to_stft(data, sr=16000)
