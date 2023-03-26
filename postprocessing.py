@@ -17,7 +17,7 @@ def convert_to_audio(data, noisy):
     Keyword arguments:
     dataset -- the dataset to be sampled from
   '''
-  #reverse the nromalisation
+  #reverse the normalisation
   data = data*40-40 +20
   #get the phase information
   spectrogram = librosa.stft(noisy, n_fft=2048, hop_length=256, window='hann')
