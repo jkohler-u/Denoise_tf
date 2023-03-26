@@ -5,7 +5,7 @@ package_name = 'tensorflow-io'
 subprocess.check_call(["pip", "install", package_name])
 
 
-# audio processing/display
+# Audio processing/display
 import soundfile as sf
 import IPython
 from scipy.io.wavfile import read
@@ -35,9 +35,9 @@ def prepare_data(name_dataset):
                 # Load the audio file using librosa
                 filepath = os.path.join(root, filename)
                 audio, sr = librosa.load(filepath, sr=16000)
-                # convert the audio input to a tensor of type float - float is important for the resampling
+                # Convert the audio input to a tensor of type float - float is important for the resampling
                 audio_tensor = tf.convert_to_tensor(audio, dtype=tf.float32)              
-                # save in list data
+                # Save in list data
                 data.append(np.array(audio_tensor))
     return data
 
@@ -61,7 +61,7 @@ def noise(data):
     '''
     temp_data = []
     noise_factor = 0.004
-    # add noise to the audio
+    # Add noise to the audio
     for i in data:
         temp = i + noise_factor*np.random.normal(size=i.shape)
         temp_data.append(temp)
@@ -77,9 +77,9 @@ def spectrogram(data):
     for i in range(len(data)):
         spectrogram = librosa.feature.melspectrogram(y=np.array(data[i]), sr = 16000, n_fft=1024, hop_length=256,n_mels = 128)
         spectrogram = librosa.power_to_db(spectrogram, ref=np.max)
-        # normalize pixel values to be between -1 and 1
+        # Normalize pixel values to be between -1 and 1
         spectrogram = ((spectrogram+40) / 40) 
-        # add a "color channel"
+        # Add a "color channel"
         spectrogram = np.expand_dims(spectrogram, axis=-1)
         spec.append(spectrogram)
     return np.array(spec)
