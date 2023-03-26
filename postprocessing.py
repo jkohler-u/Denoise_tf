@@ -10,8 +10,7 @@ Original file is located at
 import tensorflow as tf
 import numpy as np
 import librosa
-
-def convert_to_audio(data, noisy, n_fft=2048, hop_length=256, window='hann', sr=16000):
+def convert_to_audio(data, noisy, n_fft=1024, hop_length=256, window='hann', sr=16000):
     ''' reconvert prediction to audio
   
       Keyword arguments:
@@ -25,16 +24,15 @@ def convert_to_audio(data, noisy, n_fft=2048, hop_length=256, window='hann', sr=
            Reconstructed audio as np.ndarray
            
     '''
-    #we don't reverse the normalization here, because it sounds better that way
     #get the phase information
-    spectrogram = librosa.stft(noisy, n_fft=n_fft, hop_length=hop_length, window=window)
-    phase = np.angle(spectrogram)
+    spectrogram = librosa.stft(np.array(noisy), n_fft=n_fft, hop_length=hop_length, window='hann')
+    phase = (np.angle(spectrogram))
     #convert the mel-spectrogram to a stft
-    mag = librosa.feature.inverse.mel_to_stft(data, sr=sr)
-    #convert the magnitude spectrogram into a complex spectorgram
+    magnitude = data+30
+    magnitude = librosa.db_to_power(magnitude, ref=1.0)
+
+    mag = librosa.feature.inverse.mel_to_stft(magnitude, n_fft=n_fft, sr=sr)
     spectrogram_complex = mag * np.exp(1j * np.angle(phase))
-    #convert the complex spectrogram to audio
     reconstructed_audio=librosa.istft(spectrogram_complex ,hop_length=hop_length)
     #returns the audio data
     return reconstructed_audio
-  
