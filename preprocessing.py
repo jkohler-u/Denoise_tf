@@ -13,10 +13,10 @@ import matplotlib.pyplot as plt
 
 # Audio processing/display
 import IPython
-import soundfile as sf
 import librosa
 import librosa.display
 from scipy.io.wavfile import read
+import soundfile as sf
 from sklearn.model_selection import train_test_split
 
         
