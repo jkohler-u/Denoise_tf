@@ -19,19 +19,20 @@ from scipy.io.wavfile import read
 import soundfile as sf
 from sklearn.model_selection import train_test_split
 
-        
-def prepare_data(name_dataset):
-    """Loads audio files from the given dataset folder and converts them to tensors.
 
+def prepare_data(name_dataset, size):
+    """Loads audio files from the given dataset folder, converts them to tensors,
+       and pads them to the same length.
+    
     Args:
         name_dataset (str): Name of the folder that contains the dataset.
-
+        size (int): The target length of the audio samples after normalization.
+        
     Returns:
-        List of numpy arrays, where each array represents the audio data of a file.
-
+        A tensor of shape (len(data), size) representing the audio data, where each row corresponds to an audio sample.
     """
     data = []
-   
+
     for root, dirs, files in sorted(os.walk(name_dataset)):
         for filename in sorted(files):
             if filename.endswith('.wav'):
@@ -39,27 +40,15 @@ def prepare_data(name_dataset):
                 filepath = os.path.join(root, filename)
                 audio, sr = librosa.load(filepath, sr=16000)
                 # Convert the audio input to a tensor of type float - float is important for the resampling
-                audio_tensor = tf.convert_to_tensor(audio, dtype=tf.float32)              
+                audio_tensor = tf.convert_to_tensor(audio, dtype=tf.float32)
                 # Save in list data
                 data.append(np.array(audio_tensor))
-    return data
-
-def make_same(data, size):
-    ''' ensures that all data have the same length by padding
-     
-     Args:
-        data (list of numpy arrays): A list of audio samples, where each sample is represented as a numpy array.
-        size (int): The target length of the audio samples after normalization.
-        
-    Returns:
-        A tensor of shape (len(data), size) representing the audio data, where each row corresponds to an audio sample.
-        
-    '''
 
     result = np.zeros((len(data), size), dtype=data[0].dtype)
     for i, d in enumerate(data):
         result[i, :min(size, d.shape[0])] = d[:min(size, d.shape[0])]
     return tf.stack(result)
+        
 
 def noise(data, noise_factor=0.004):
     ''' Adds random noise to the audio data.
