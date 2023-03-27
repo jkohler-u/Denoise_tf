@@ -13,37 +13,37 @@ subprocess.check_call(["pip", "install", package_name])
 '''optimized U-Net with dropout, MAE, and learning rate = 0.0006'''
 input = layers.Input(shape=(128,768,1,))
 
-# Encoder
+# Encoder with added dropout
 conv1 = layers.Conv2D(32, (3,3), activation="relu", padding="same")(input)
-dropout1 = layers.Dropout(rate=0.2)(conv1)  # added dropout
+dropout1 = layers.Dropout(rate=0.2)(conv1)  
 pool1 = layers.MaxPooling2D(3,strides =  2,padding="same")(dropout1)
 
 conv2 = layers.Conv2D(64, 3, activation="relu", padding="same")(pool1)
-dropout2 = layers.Dropout(rate=0.2)(conv2)  # added dropout
+dropout2 = layers.Dropout(rate=0.2)(conv2)  
 pool2 = layers.MaxPooling2D(3,strides = 2, padding="same")(dropout2)
 
 conv3 = layers.Conv2D(128, 3, activation="relu", padding="same")(pool2)
-dropout3 = layers.Dropout(rate=0.2)(conv3)  # added dropout
+dropout3 = layers.Dropout(rate=0.2)(conv3)  
 pool3 = layers.MaxPooling2D(3,strides =  2,padding="same")(dropout3)
 
 conv4 = layers.Conv2D(256, 3, activation="relu", padding="same")(pool3)
-dropout4 = layers.Dropout(rate=0.2)(conv4)  # added dropout
+dropout4 = layers.Dropout(rate=0.2)(conv4)  
 pool4 = layers.MaxPooling2D(3,strides = 2, padding="same")(dropout4)
 
 conv5 = layers.Conv2D(512, 3, activation="relu", padding="same")(pool4)
-dropout5 = layers.Dropout(rate=0.2)(conv5)  # added dropout
+dropout5 = layers.Dropout(rate=0.2)(conv5)  
 pool5 = layers.MaxPooling2D(3,strides =  2,padding="same")(dropout5)
 
 conv6 = layers.Conv2D(1024, 3, activation="relu", padding="same")(pool5)
-dropout6 = layers.Dropout(rate=0.2)(conv6)  # added dropout
+dropout6 = layers.Dropout(rate=0.2)(conv6)  
 pool6 = layers.MaxPooling2D(3,strides = 2, padding="same")(dropout6)
 
 conv7 = layers.Conv2D(1024, 3, activation="relu", padding="same")(pool6)
-dropout7 = layers.Dropout(rate=0.2)(conv7)  # added dropout
+dropout7 = layers.Dropout(rate=0.2)(conv7)  
 pool7 = layers.MaxPooling2D(3,strides =  1,padding="same")(dropout7)
 
 conv8 = layers.Conv2D(1024, 3, activation="relu", padding="same")(pool7)
-dropout8 = layers.Dropout(rate=0.2)(conv8)  # added dropout
+dropout8 = layers.Dropout(rate=0.2)(conv8)  
 pool8 = layers.MaxPooling2D(3,strides = 1, padding="same")(dropout8)
 
 # Bridge
