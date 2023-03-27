@@ -1,23 +1,19 @@
+import os
+from scipy.io.wavfile import read
 import subprocess
-# Define the package you want to install
 package_name = 'tensorflow-io'
-# Use pip to install the package
 subprocess.check_call(["pip", "install", package_name])
 
-import tensorflow as tf
-import tensorflow_io as tfio
-
-import os
-import numpy as np
 import matplotlib.pyplot as plt
-
-# Audio processing/display
+import numpy as np
 import IPython
 import librosa
 import librosa.display
-from scipy.io.wavfile import read
 import soundfile as sf
 from sklearn.model_selection import train_test_split
+
+import tensorflow as tf
+import tensorflow_io as tfio
 
 
 def prepare_data(name_dataset, size):
