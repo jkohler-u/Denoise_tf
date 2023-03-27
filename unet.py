@@ -1,18 +1,14 @@
-import subprocess
-
-# Define the package you want to install
-package_name = 'tensorflow-io'
-
-# Use pip to install the package
-subprocess.check_call(["pip", "install", package_name])
- 
-
 # Libaries
+import subprocess
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.models import Model
 import tensorflow_io as tfio
+
+package_name = 'tensorflow-io'
+subprocess.check_call(["pip", "install", package_name])
+
 
 '''optimized U-Net with dropout, MAE, and learning rate = 0.0006'''
 input = layers.Input(shape=(128,768,1,))
