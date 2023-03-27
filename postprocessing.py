@@ -7,9 +7,10 @@ Original file is located at
     https://colab.research.google.com/drive/1brDRob4BCWGUucbrGF6bFZg63uAiuK0z
 """
 
-import tensorflow as tf
 import numpy as np
 import librosa
+import tensorflow as tf
+
 def convert_to_audio(data, noisy, n_fft=1024, hop_length=256, window='hann', sr=16000):
     ''' reconvert prediction to audio
   
