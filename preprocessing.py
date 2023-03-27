@@ -65,7 +65,7 @@ def noise(data, noise_factor=0.004):
         temp_data.append(temp)
     return temp_data
 
-def spectrogram(data, sr =16000, n_fft=1024, hop_length=256,n_mels = 128):
+def spectrogram(data, sr=16000, n_fft=1024, hop_length=256, n_mels=128):
     ''' Computes the Mel spectrogram of the audio data.
     
     Args:
@@ -83,7 +83,7 @@ def spectrogram(data, sr =16000, n_fft=1024, hop_length=256,n_mels = 128):
     '''    
     spec = []
     for i in range(len(data)):
-        spectrogram = librosa.feature.melspectrogram(y=np.array(data[i]), sr = sr, n_fft=n_fft, hop_length=hop_length,n_mels = n_mels)
+        spectrogram = librosa.feature.melspectrogram(y=np.array(data[i]), sr=sr, n_fft=n_fft, hop_length=hop_length, n_mels=n_mels)
         spectrogram = librosa.power_to_db(spectrogram, ref=np.max)
         # Normalize pixel values to be between -1 and 1
         spectrogram = ((spectrogram+40) / 40) 
