@@ -15,11 +15,11 @@ def convert_to_audio(data, noisy, n_fft=1024, hop_length=256, window='hann', sr=
     ''' reconvert prediction to audio
   
       Args:
-          data: the predicted magnitude spectrogram to be sampled from
-          noisy: the original noisy audio
-          n_fft: length of the windowed signal after padding with zeros (default is 2048)
-          hop_length: number of audio samples between adjacent STFT columns (default is: 256)
-          window: window function (default is  a raised cosine window: 'hann')
+          data (array-like): the predicted magnitude spectrogram to be sampled from
+          noisy (array-like): the original noisy audio
+          n_fft (int>0, optional): length of the windowed signal after padding with zeros. Default is 2048
+          hop_length (int>0, optional): number of audio samples between adjacent STFT columns. Default is: 256
+          window (string, tuple, number, function, np.ndarray [shape=(n_fft,)]), optional: window function. Default is  a raised cosine window: 'hann'
        Returns: 
            Reconstructed audio as np.ndarray
            
