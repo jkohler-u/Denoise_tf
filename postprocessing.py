@@ -28,7 +28,7 @@ def convert_to_audio(data, noisy, n_fft=1024, hop_length=256, window='hann', sr=
     spectrogram = librosa.stft(np.array(noisy), n_fft=n_fft, hop_length=hop_length, window='hann')
     phase = (np.angle(spectrogram))
     #convert the mel-spectrogram to a stft
-    magnitude = data+30
+    magnitude = data + 30
     magnitude = librosa.db_to_power(magnitude, ref=1.0)
 
     mag = librosa.feature.inverse.mel_to_stft(magnitude, n_fft=n_fft, sr=sr)
