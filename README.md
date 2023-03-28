@@ -15,5 +15,7 @@ In the beginning of our project we worked with the Librivox Dataset. It is not n
 To validate how our model works with unknown data we created this dataset of noisy audios: https://drive.google.com/file/d/185gnGWZhxIkQVkx5pUmZ-roebFEP9rjQ/view?usp=share_link. We tested unknown speakers, languages and noise. You can download this dataset and after running the model try out how the model can deal with unknown data.
 
 
+
+
 This project was created as a final project for the course "Implementing ANNs with TensorFlow" of the Cognitive Science program of the Universität Osnabrück.
 Additional information to our research, methods, results and a discussion can be found in the paper. The video serves to explain how our model works illustratively.
