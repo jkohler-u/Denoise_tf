@@ -14,13 +14,12 @@ import tensorflow as tf
 def convert_to_audio(data, noisy, n_fft=1024, hop_length=256, window='hann', sr=16000):
     ''' reconvert prediction to audio
   
-      Keyword arguments:
+      Args:
           data: the predicted magnitude spectrogram to be sampled from
           noisy: the original noisy audio
-      Arguments:
-           n_fft: length of the windowed signal after padding with zeros (default is 2048)
-           hop_length: number of audio samples between adjacent STFT columns (default is: 256)
-           window: window function (default is  a raised cosine window: 'hann')
+          n_fft: length of the windowed signal after padding with zeros (default is 2048)
+          hop_length: number of audio samples between adjacent STFT columns (default is: 256)
+          window: window function (default is  a raised cosine window: 'hann')
        Returns: 
            Reconstructed audio as np.ndarray
            
