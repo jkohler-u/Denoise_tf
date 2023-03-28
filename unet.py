@@ -92,11 +92,13 @@ optimized.compile(optimizer=adam, loss="mean_absolute_error")
 
 
 def signalToNoiseLoss(y_true, y_pred):
-    '''calculate the loss between Signal and noise
+    '''calculates the loss between signal and noise
     
-     Keyword arguments: 
-     y_true = target
-     y_pred = prediction
+    Args: 
+      y_true: target values for signal as tensors or other array-like objects
+      y_pred: predicted values for signal as tensor or other array-like objects
+    Returns:
+      The signal-to-noise-loss as float
     '''
     noise = y_true - y_pred
     signal = y_true
@@ -105,11 +107,13 @@ def signalToNoiseLoss(y_true, y_pred):
     return loss
 
 def noiseToSignalRatio(y_true, y_pred):
-    '''calculate the loss between noise and signal
+    '''calculates the loss between noise and signal
     
-     Keyword arguments: 
-     y_true = target
-     y_pred = prediction
+    Args: 
+      y_true: target values for signal as tensors or other array-like objects
+      y_pred: predicted values for signal as tensor or other array-like objects
+    Returns:
+      The noise-to-signal-loss as float
     '''
     noise = y_true - y_pred
     signal = y_true
