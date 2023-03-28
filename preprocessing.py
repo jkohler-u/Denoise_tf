@@ -17,7 +17,7 @@ import tensorflow_io as tfio
 
 
 def prepare_data(name_dataset, size):
-    """Loads audio files from the given dataset folder, converts them to tensors,
+    '''Loads audio files from the given dataset folder, converts them to tensors,
        and pads them to the same length.
     
     Args:
@@ -26,7 +26,7 @@ def prepare_data(name_dataset, size):
         
     Returns:
         A tensor of shape (len(data), size) representing the audio data, where each row corresponds to an audio sample.
-    """
+    '''
     data = []
 
     for root, dirs, files in sorted(os.walk(name_dataset)):
