@@ -10,9 +10,10 @@ Noisy Data: https://drive.google.com/file/d/1tloBlhRN4Aa7TFu1e1eQ_NpRipg0Ggkq/vi
 
 You can upload these files in your Google Drive and then run the Model.ibynp. You will be asked for your permission to connect to your Drive and if this permission is given the audio files can be loaded and you can let the model run!
 
-If you want to see how the trained model performs on data from a different dataset, you'll also need to download this one: https://drive.google.com/file/d/185gnGWZhxIkQVkx5pUmZ-roebFEP9rjQ/view?usp=share_link
+In the beginning of our project we worked with the Librivox Dataset. It is not necessary to run this code, but if you like you can download the clean audios and add with the noise function from the preproccessing Gauusian noise to it: https://drive.google.com/file/d/1wrQgdD3-4oHmqpQRzqbCEU7v9nYYu3mJ/view?usp=share_link
 
-This last file is the one from the Librivox Dataset we used in the beginning when we only added Gaussian noise to it. It is not necessary to run this code. https://drive.google.com/file/d/1wrQgdD3-4oHmqpQRzqbCEU7v9nYYu3mJ/view?usp=share_link
+For validating how our model works with unknown data we worked with this dataset of noisy audios: https://drive.google.com/file/d/185gnGWZhxIkQVkx5pUmZ-roebFEP9rjQ/view?usp=share_link We tested unknown speekers, languages and noise. You can download this dataset and after running the model test for yourself how the model can deal with unknown data.
 
-If you want to try these alternative datasets you have to adjust the filenames in the model.ibynp-code for opening and extracting the zipfiles.
 
+This project was created as a final project for the course "Implementing ANNs with TensorFlow" of the Cognitive Science program of the Universität Osnabrück.
+Additional information to our research, methods, results and a discussion can be found in the paper. The video serves to explain how our model works illustratively.
