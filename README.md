@@ -19,3 +19,4 @@ To validate how our model works with unknown data we created this dataset of noi
 
 This project was created as a final project for the course "Implementing ANNs with TensorFlow" of the Cognitive Science program of the Universität Osnabrück.
 Additional information to our research, methods, results and a discussion can be found in the paper. The video serves to explain how our model works illustratively.
+The video can be found here: https://drive.google.com/file/d/1A3N_yXVaOfmSAh7RvcpCjlRrfeX0pHzL/view?usp=share_link
